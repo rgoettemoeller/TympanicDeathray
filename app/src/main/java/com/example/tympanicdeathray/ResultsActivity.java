@@ -5,13 +5,15 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 public class ResultsActivity extends Activity {
     private ImageView earImage;
     private MediaPlayer laserSound;
-    private int loopCounter;
+    private TextView previousText;
+    private TextView currentText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,20 +27,16 @@ public class ResultsActivity extends Activity {
                 earImage.setVisibility(View.GONE);
             }
         });
-        loopCounter = 0;
+        previousText = (TextView) findViewById(R.id.previousText);
+        currentText = (TextView) findViewById(R.id.currentText);
     }
 
     public void refreshResults(View view) {
         ResultsActivity obj = new ResultsActivity();
         earImage.setVisibility(View.VISIBLE);
         laserSound.start();
-
+        previousText.setText("Holy fuck, your child is dying");
+        currentText.setText("Call the undertaker");
     }
-
-    private void hideImage() {
-
-    }
-
-
 
 }
